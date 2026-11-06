@@ -50,5 +50,5 @@ int main() {
     double total = baseImponible + iva;
 
     // Paso 4: imprimir el ticket
-    imprimirTicket(nombre, cantidad, precio, subtotal, montoDescuento, total);
+    imprimirTicket(nombre, cantidad, precio, subtotal, montoDescuento, iva, total);
 }
