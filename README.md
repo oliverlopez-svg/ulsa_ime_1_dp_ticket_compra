@@ -6,6 +6,8 @@
 ## 1. Descripción del problema (Fase 1)
 <!-- Explica con tus palabras qué hace tu programa y para qué serviría en la vida real. Máximo 4 líneas. -->
 
+Solicita los datos de un producto (nombre, precio unitario, cantidad y porcentaje de descuento), realiza los cálculos correspondientes (subtotal, monto de descuento, IVA y total a pagar) y genera un ticket de compra formateado de manera profesional e incluye el nombre de la persona que atiende.
+
 _____
 
 ## 2. Entradas y salidas (Fase 1)
@@ -15,15 +17,16 @@ _____
 
 | Entrada | Tipo de dato | Función de `utilerias.h` |
 |---|---|---|
-| _____ | _____ | _____ |
-| _____ | _____ | _____ |
-| _____ | _____ | _____ |
-| _____ | _____ | _____ |
+Nombre del producto std::string leerCadena() / leerLinea()
+Precio unitario double / float leerDouble()
+Cantidad int leerInt()
+Descuento (%) double / float leerDouble()
 
 **Salida** (¿qué datos muestra el ticket?):
-_____
+_____Nombre de la tienda, precio del producto, IVA, descuento, total a pagar
 
 **¿El IVA se calcula sobre el subtotal o sobre lo que queda después del descuento? ¿Por qué?**
+se calcula después de aplicar el descuento, asi lo dice la ley.
 _____
 
 ## 3. Restricciones e invariante (Fases 1 y 2)
@@ -32,35 +35,36 @@ _____
 
 | Dato | ¿Qué valores son válidos? | ¿Por qué? |
 |---|---|---|
-| Nombre del producto | _____ | _____ |
-| Precio | _____ | _____ |
-| Cantidad | _____ | _____ |
-| Descuento (%) | _____ | _____ |
+| Nombre del producto | no vacio | debe haber algún nombre  |
+| Precio | dato numérico | es en numero |
+| Cantidad | dato numerico | es un número |
+| Descuento (%) | porentaje menor a 100% | debe representar parte del precio |
 
 **¿Qué hace mi programa si el usuario escribe un dato fuera de rango?**
-_____
+_____marca error y lo vuelve a pedir
 
 **¿Puede el total salir negativo? ¿Por qué?**
-_____
+_____no, el descuento debe ser menor al 100% y todos los precios son positivos
 
 **Invariante 1** (después del ciclo que valida el precio, ¿qué es siempre cierto sobre `precio`?):
-_____
+_____es un número
 
 **Invariante 2** (¿qué relación se cumple siempre entre el subtotal, el descuento, el IVA y el total?):
-_____
+_____son números, saca porcentajes
 
 ## 4. Casos resueltos a mano (Fase 1)
 
 | Caso | Nombre | Precio | Cantidad | Descuento (%) | Subtotal | Descuento ($) | IVA | Total |
 |---|---|---|---|---|---|---|---|---|
-| 1 (sin descuento) | _____ | _____ | _____ | _____ | _____ | _____ | _____ | _____ |
-| 2 (con descuento) | _____ | _____ | _____ | _____ | _____ | _____ | _____ | _____ |
-| 3 (precio con centavos) | _____ | _____ | _____ | _____ | _____ | _____ | _____ | _____ |
+| 1 (sin descuento) | _cuaderno____ | __100___ | ___1__ | ___0__ | __100___ | ___0__ | ___16__ | ___116__ |
+| 2 (con descuento) | ___Mochila__ | __100___ | __1___ | ___10__ | ___100__ | ___0__ | ___14.40__ | __104.40___ |
+
 
 ## 5. Tipo de dato abstracto (Fase 1)
 
 | TDA | Datos (¿qué tiene?) | Operaciones (¿qué se puede hacer con él?) |
-|---|---|---|
+|---|---|---|nombre (texto), precio (decimal), cantidad (entero), descuento (porcentaje)
+calcular su subtotal, calcular su descuento, calcular su IVA, calcular su total
 | Producto | nombre (texto), _____, _____ | calcular su subtotal |
 | _____ | _____ | _____ |
 
@@ -87,10 +91,11 @@ Generar ticket de compra
 ```
 
 **Análisis ascendente: ¿qué partes del árbol ya estaban resueltas por una función que existe? ¿Cuáles?**
+leerDouble, leerInt, leerCadena
 _____
 
 **¿Alguna parte del árbol hacía más de una cosa? ¿Cómo la dividiste?**
-_____
+_____la de pedir datos, se divide en subtareas
 
 ## 7. Módulos y receta (Fase 2)
 
